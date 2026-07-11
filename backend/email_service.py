@@ -306,7 +306,8 @@ def send_contact_email(
             data=req_data,
             headers={
                 "Authorization": f"Bearer {settings.RESEND_API_KEY}",
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "User-Agent": f"VVAutomation-ContactAPI/1.0"
             },
             method="POST"
         )
