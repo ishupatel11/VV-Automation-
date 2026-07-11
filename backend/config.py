@@ -17,13 +17,15 @@ class Settings(BaseSettings):
     #   mysql+pymysql://user:password@host:3306/dbname
     DATABASE_URL: str
 
-    # ── Gmail SMTP ────────────────────────────────────────────────────────
-    # The Gmail address used to SEND the emails (your Google account)
-    GMAIL_USER: str
+    # ── Resend API / SMTP ──────────────────────────────────────────────────
+    # API key for Resend (starting with re_) for HTTPS-based email delivery
+    RESEND_API_KEY: str = ""
 
-    # Gmail App Password (NOT your regular password).
-    # Generate at: https://myaccount.google.com/apppasswords
-    GMAIL_APP_PASSWORD: str
+    # The Gmail address used to SEND the emails (if using SMTP fallback)
+    GMAIL_USER: str = ""
+
+    # Gmail App Password (if using SMTP fallback)
+    GMAIL_APP_PASSWORD: str = ""
 
     # The Gmail address where contact submissions are DELIVERED
     RECIPIENT_EMAIL: str

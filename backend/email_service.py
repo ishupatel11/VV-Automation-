@@ -4,6 +4,9 @@ email_service.py — Gmail SMTP email sender with premium Black & White HTML tem
 
 import smtplib
 import ssl
+import json
+import urllib.request
+import urllib.error
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from datetime import datetime, timezone, timedelta
@@ -273,8 +276,9 @@ def send_contact_email(
     submitted_at: datetime,
 ) -> None:
     """
-    Send an HTML notification email via Gmail SMTP (SSL, port 465).
-    Raises an exception on failure — caught by the router.
+    Send an HTML notification email.
+    Uses Resend API (HTTP POST) if RESEND_API_KEY is configured.
+    Otherwise, falls back to Gmail SMTP (SSL, port 465).
     """
     html_body = _build_html_email(
         full_name=full_name,
@@ -285,6 +289,43 @@ def send_contact_email(
         submitted_at=submitted_at,
     )
 
+    if settings.RESEND_API_KEY:
+        log.info("Sending email via Resend API...")
+        # Note: If domain is not verified, Resend requires 'from' to be 'onboarding@resend.dev'
+        payload = {
+            "from": "VV Automation <onboarding@resend.dev>",
+            "to": settings.RECIPIENT_EMAIL,
+            "subject": f"[VV Automation] New Enquiry: {subject}",
+            "html": html_body,
+            "reply_to": email
+        }
+        
+        req_data = json.dumps(payload).encode("utf-8")
+        req = urllib.request.Request(
+            "https://api.resend.com/emails",
+            data=req_data,
+            headers={
+                "Authorization": f"Bearer {settings.RESEND_API_KEY}",
+                "Content-Type": "application/json"
+            },
+            method="POST"
+        )
+        
+        try:
+            with urllib.request.urlopen(req, timeout=10.0) as response:
+                resp_body = response.read().decode("utf-8")
+                log.info("Email sent successfully via Resend API | response=%s", resp_body)
+                return
+        except urllib.error.HTTPError as err:
+            err_body = err.read().decode("utf-8")
+            log.error("Resend API HTTP error | code=%d | response=%s", err.code, err_body)
+            raise Exception(f"Resend API error: {err_body}") from err
+        except Exception as exc:
+            log.error("Failed to send email via Resend API | error=%s", exc)
+            raise
+
+    # Fallback to Gmail SMTP
+    log.info("Sending email via Gmail SMTP...")
     msg = MIMEMultipart("alternative")
     msg["Subject"] = f"[VV Automation] New Enquiry: {subject}"
     msg["From"]    = f"VV Automation Website <{settings.GMAIL_USER}>"
@@ -304,7 +345,7 @@ def send_contact_email(
                 msg=msg.as_string(),
             )
         log.info(
-            "Email sent successfully | to=%s | subject=%s",
+            "Email sent successfully via SMTP | to=%s | subject=%s",
             settings.RECIPIENT_EMAIL, subject,
         )
     except smtplib.SMTPAuthenticationError:
@@ -314,5 +355,5 @@ def send_contact_email(
         )
         raise
     except Exception as exc:
-        log.error("Failed to send email | error=%s", exc)
+        log.error("Failed to send email via SMTP | error=%s", exc)
         raise
