@@ -31,6 +31,15 @@ settings = get_settings()
 router = APIRouter()
 
 
+@router.get("/debug-config", include_in_schema=False)
+async def debug_config():
+    return {
+        "has_resend_key": bool(settings.RESEND_API_KEY),
+        "recipient_email": settings.RECIPIENT_EMAIL,
+        "gmail_user_configured": bool(settings.GMAIL_USER)
+    }
+
+
 def _get_client_ip(request: Request) -> str:
     """Extract real client IP respecting X-Forwarded-For proxy header."""
     forwarded = request.headers.get("X-Forwarded-For")
