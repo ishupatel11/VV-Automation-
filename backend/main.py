@@ -80,6 +80,15 @@ if settings.is_production:
 app.include_router(router, prefix="/api")
 
 
+import socket
+
+def test_tcp_port(host: str, port: int, timeout: float = 3.0) -> bool:
+    try:
+        with socket.create_connection((host, port), timeout=timeout):
+            return True
+    except Exception:
+        return False
+
 # ── Health Check ──────────────────────────────────────────────────────────────
 @app.get("/health", tags=["Health"], include_in_schema=False)
 async def health_check():
@@ -93,6 +102,8 @@ async def health_check():
             "service": settings.APP_NAME,
             "version": settings.APP_VERSION,
             "environment": settings.APP_ENV,
+            "smtp_465_reachable": test_tcp_port("smtp.gmail.com", 465),
+            "smtp_587_reachable": test_tcp_port("smtp.gmail.com", 587),
         }
     )
 
