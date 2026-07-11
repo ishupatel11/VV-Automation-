@@ -296,7 +296,7 @@ def send_contact_email(
     context = ssl.create_default_context()
 
     try:
-        with smtplib.SMTP_SSL(SMTP_HOST, SMTP_PORT, context=context) as server:
+        with smtplib.SMTP_SSL(SMTP_HOST, SMTP_PORT, context=context, timeout=15.0) as server:
             server.login(settings.GMAIL_USER, settings.GMAIL_APP_PASSWORD)
             server.sendmail(
                 from_addr=settings.GMAIL_USER,

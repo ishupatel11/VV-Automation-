@@ -14,7 +14,7 @@ import asyncio
 from datetime import datetime, timezone
 from functools import partial
 
-from fastapi import APIRouter, Depends, Request, HTTPException, status
+from fastapi import APIRouter, Depends, Request, HTTPException, status, BackgroundTasks
 from sqlalchemy.orm import Session
 
 from config import get_settings
@@ -63,6 +63,7 @@ def _get_user_agent(request: Request) -> str:
 async def submit_contact(
     payload: ContactRequest,
     request: Request,
+    background_tasks: BackgroundTasks,
     db: Session = Depends(get_db),
     _rate: None = Depends(check_rate_limit),  # Raises 429 if limit exceeded
 ) -> ContactResponse:
@@ -103,30 +104,18 @@ async def submit_contact(
             detail="Failed to save your message. Please try again.",
         )
 
-    # ── 2. Send email (non-blocking) ──────────────────────────────────────
-    # Run synchronous SMTP call in a thread pool so it doesn't block
-    # the async event loop. If email fails, we still return success
-    # because the message is already saved in the database.
-    loop = asyncio.get_event_loop()
-    try:
-        await loop.run_in_executor(
-            None,  # Default thread pool
-            partial(
-                send_contact_email,
-                full_name    = payload.full_name,
-                email        = payload.email,
-                subject      = payload.subject,
-                message      = payload.message,
-                ip_address   = ip_address,
-                submitted_at = submitted_at,
-            ),
-        )
-    except Exception as exc:
-        # Email failure is non-fatal — message is already in DB
-        log.error(
-            "Email delivery failed (message saved) | id=%d | error=%s",
-            contact.id, exc,
-        )
+    # ── 2. Send email in background (does NOT block response) ─────────────
+    # If SMTP fails or times out, the message is already saved in the database
+    # and the visitor receives an instant success confirmation.
+    background_tasks.add_task(
+        send_contact_email,
+        full_name    = payload.full_name,
+        email        = payload.email,
+        subject      = payload.subject,
+        message      = payload.message,
+        ip_address   = ip_address,
+        submitted_at = submitted_at,
+    )
 
     # ── 3. Return success ─────────────────────────────────────────────────
     return ContactResponse(
