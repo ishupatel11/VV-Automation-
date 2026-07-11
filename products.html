@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="Untitled-1 (1).svg">
+    <title>Products | v.v automation</title>
+    <meta name="description"
+        content="Explore our range of industrial machinery: CNC machines, conveyor systems, and collaborative robots.">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="Untitled-1 (1).svg" alt="V.V. Logo" style="height: 48px; width: 48px; object-fit: contain;">
+                <span class="vv-text">V.V.</span>
+                <span class="automation-text">AUT<span class="gear-letter"><i
+                            class="fa-solid fa-gear"></i></span>MATI<span class="gear-letter"><i
+                            class="fa-solid fa-gear"></i></span>N</span>
+            </a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="solution.html" class="nav-link">Solutions</a></li>
+                    <li><a href="products.html" class="nav-link active">Products</a></li>
+                    <li><a href="contact.html" class="nav-link btn-contact">Contact Us</a></li>
+                </ul>
+                <div class="mobile-toggle" id="mobile-toggle">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-header">
+            <a href="index.html" class="logo">v.v automation</a>
+            <div class="close-menu" id="close-menu">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+        </div>
+        <ul class="mobile-nav-list">
+            <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+            <li><a href="about.html" class="mobile-nav-link">About</a></li>
+            <li><a href="solution.html" class="mobile-nav-link">Solutions</a></li>
+            <li><a href="products.html" class="mobile-nav-link">Products</a></li>
+            <li><a href="contact.html" class="mobile-nav-link">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <!-- Featured Products -->
+    <section id="products" class="section products" style="padding-top: 150px;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Products</h2>
+                <div class="section-controls">
+                    <button id="theme-toggle" class="control-btn" title="Toggle Light/Dark Mode"><i
+                            class="fa-solid fa-sun"></i></button>
+                    <button class="control-btn prev"><i class="fa-solid fa-angle-left"></i></button>
+                    <button class="control-btn next"><i class="fa-solid fa-angle-right"></i></button>
+                </div>
+            </div>
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1565514020176-db704dbb8a0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                            alt="CNC Machine">
+                        <span class="badge new">New</span>
+                    </div>
+                    <div class="product-details">
+                        <span class="product-category">Machining</span>
+                        <h3 class="product-title">Axis-X 5000 CNC</h3>
+                        <p class="product-desc">High-speed 5-axis vertical machining center with advanced thermal
+                            stability.</p>
+                        <a href="product-detail-cnc.html" class="btn btn-sm btn-outline">View Specs</a>
+                    </div>
+                </div>
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                            alt="Conveyor System">
+                    </div>
+                    <div class="product-details">
+                        <span class="product-category">Logistics</span>
+                        <h3 class="product-title">FlowMaster Conveyor</h3>
+                        <p class="product-desc">Modular smart conveyor system with integrated weighing and sorting.</p>
+                        <a href="product-detail-conveyor.html" class="btn btn-sm btn-outline">View Specs</a>
+                    </div>
+                </div>
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1624365163075-8495f590ff33?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                            alt="Industrial Robot">
+                        <span class="badge popular">Popular</span>
+                    </div>
+                    <div class="product-details">
+                        <span class="product-category">Robotics</span>
+                        <h3 class="product-title">Cobot S-Series</h3>
+                        <p class="product-desc">Collaborative robot designed for safe human-machine interaction in
+                            assembly.</p>
+                        <a href="product-detail-cobot.html" class="btn btn-sm btn-outline">View Specs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-top">
+            <div class="footer-brand">
+                <a href="index.html" class="logo footer-logo">
+                    <img src="Untitled-1 (1).svg" alt="V.V. Logo" style="height:48px; width:48px; object-fit:contain;">
+                    <span class="vv-text">V.V.</span>
+                    <span class="automation-text">AUT<span class="gear-letter"><i
+                                class="fa-solid fa-gear"></i></span>MATI<span class="gear-letter"><i
+                                class="fa-solid fa-gear"></i></span>N</span>
+                </a>
+                <p>Pioneering the future of industrial automation with state-of-the-art robotics and machinery
+                    solutions.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Careers</a></li>
+                    <li><a href="#">News & Events</a></li>
+                    <li><a href="#">Partners</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Solutions</h4>
+                <ul>
+                    <li><a href="solution.html">Robotic Arms</a></li>
+                    <li><a href="solution.html">CNC Machining</a></li>
+                    <li><a href="solution.html">Assembly Lines</a></li>
+                    <li><a href="solution.html">Smart Sensors</a></li>
+                </ul>
+            </div>
+            <div class="footer-newsletter">
+                <h4>Newsletter</h4>
+                <p>Subscribe for latest updates and technology trends.</p>
+                <div class="newsletter-input">
+                    <input type="email" placeholder="Enter your email">
+                    <button><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 v.v automation. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,3 @@
+# Railway / Render deployment command
+# Binds to 0.0.0.0 so the platform can route traffic to the container
+web: uvicorn main:app --host 0.0.0.0 --port $PORT

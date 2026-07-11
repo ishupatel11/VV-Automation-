@@ -1,0 +1,18 @@
+# System Files
+.DS_Store
+Thumbs.db
+*.log
+
+# Python / Backend
+backend/venv/
+backend/__pycache__/
+backend/*.pyc
+backend/.env
+backend/vv_automation.db
+backend/vv_automation.db-journal
+backend/tests/__pycache__/
+
+# Frontend Node Modules (if any)
+node_modules/
+dist/
+.cache/

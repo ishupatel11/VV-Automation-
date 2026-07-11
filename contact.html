@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="Untitled-1 (1).svg">
+    <title>Contact Us | v.v automation</title>
+    <meta name="description" content="Contact V.V. Automation for your industrial requirements. We are available 24/7.">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="Untitled-1 (1).svg" alt="V.V. Logo" style="height: 44px;">
+                <span class="vv-text">V.V.</span>
+                <span class="automation-text">AUT<span class="gear-letter"><i
+                            class="fa-solid fa-gear"></i></span>MATI<span class="gear-letter"><i
+                            class="fa-solid fa-gear"></i></span>N</span>
+            </a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="solution.html" class="nav-link">Solutions</a></li>
+                    <li><a href="products.html" class="nav-link">Products</a></li>
+                    <li><a href="contact.html" class="nav-link btn-contact active">Contact Us</a></li>
+                </ul>
+                <div class="mobile-toggle" id="mobile-toggle">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-header">
+            <a href="index.html" class="logo">v.v automation</a>
+            <div class="close-menu" id="close-menu">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+        </div>
+        <ul class="mobile-nav-list">
+            <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+            <li><a href="about.html" class="mobile-nav-link">About</a></li>
+            <li><a href="solution.html" class="mobile-nav-link">Solutions</a></li>
+            <li><a href="products.html" class="mobile-nav-link">Products</a></li>
+            <li><a href="contact.html" class="mobile-nav-link">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact" style="padding-top: 150px;">
+        <div class="container contact-container">
+            <div class="contact-info">
+                <h4 class="section-tag">Contact Us</h4>
+                <h2 class="section-title">Let's Discuss Your Project</h2>
+                <p class="section-desc">We are available 24/7 to answer your questions and provide technical support.
+                </p>
+
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <div class="icon-circle"><i class="fa-solid fa-location-dot"></i></div>
+                        <div>
+                            <h5>Headquarters</h5>
+                            <p>Survey No.56, Parth Ind Estate, Plot No.5, nr. Pan Agri</p>
+                            <p>Export,N.H.27, Bhunava, Gujarat 360311</p>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <div class="icon-circle"><i class="fa-solid fa-phone"></i></div>
+                        <div>
+                            <h5>Phone</h5>
+                            <p>+91 9426082865</p>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <div class="icon-circle"><i class="fa-solid fa-envelope"></i></div>
+                        <div>
+                            <h5>Email</h5>
+                            <p>automationvv8@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <form class="contact-form" id="contactForm" name="contact" method="POST" data-netlify="true" novalidate>
+                <input type="hidden" name="form-name" value="contact">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 15px;">
+                    <h3 style="margin: 0; font-size: 1.25rem; font-family: 'Space Grotesk', sans-serif; color: var(--white);">Send Message</h3>
+                    <button type="button" id="testFillBtn" style="background: rgba(59, 130, 246, 0.1); border: 1px dashed rgba(59, 130, 246, 0.3); color: var(--accent-color); padding: 6px 12px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: var(--transition);">
+                        <i class="fa-solid fa-vial"></i> Auto-Fill Test Data
+                    </button>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Full Name <span class="required-star">*</span></label>
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        <span class="field-error" id="nameError">Please enter your name.</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required-star">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        <span class="field-error" id="emailError">Please enter a valid email.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject <span class="required-star">*</span></label>
+                    <input type="text" id="subject" name="subject" placeholder="e.g. Project Inquiry" required>
+                    <span class="field-error" id="subjectError">Please enter a subject.</span>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message <span class="required-star">*</span></label>
+                    <textarea id="message" name="message" rows="5"
+                        placeholder="Tell us about your requirements..." required></textarea>
+                    <span class="field-error" id="messageError">Please enter your message.</span>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
+                    <span id="btnText"><i class="fa-solid fa-paper-plane" style="margin-right:8px;"></i>Send Message</span>
+                    <span id="btnLoading" style="display:none;">
+                        <i class="fa-solid fa-spinner fa-spin" style="margin-right:8px;"></i>Sending…
+                    </span>
+                </button>
+
+                <!-- Success Banner -->
+                <div id="successBanner" style="display:none;" class="form-success-banner">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <div>
+                        <strong>Message Sent Successfully!</strong>
+                        <p>Thank you! We'll get back to you within 24 hours.</p>
+                    </div>
+                </div>
+
+                <!-- Error Banner -->
+                <div id="errorBanner" style="display:none;" class="form-error-banner">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <div>
+                        <strong>Something went wrong.</strong>
+                        <p id="errorText">Please try again or email us directly.</p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-top">
+            <div class="footer-brand">
+                <a href="index.html" class="logo footer-logo">
+                    <img src="Untitled-1 (1).svg" alt="V.V. Logo" style="height:44px;">
+                    <span class="vv-text">V.V.</span>
+                    <span class="automation-text">AUT<span class="gear-letter"><i
+                                class="fa-solid fa-gear"></i></span>MATI<span class="gear-letter"><i
+                                class="fa-solid fa-gear"></i></span>N</span>
+                </a>
+                <p>Pioneering the future of industrial automation with state-of-the-art robotics and machinery
+                    solutions.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Careers</a></li>
+                    <li><a href="#">News & Events</a></li>
+                    <li><a href="#">Partners</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Solutions</h4>
+                <ul>
+                    <li><a href="solution.html">Robotic Arms</a></li>
+                    <li><a href="solution.html">CNC Machining</a></li>
+                    <li><a href="solution.html">Assembly Lines</a></li>
+                    <li><a href="solution.html">Smart Sensors</a></li>
+                </ul>
+            </div>
+            <div class="footer-newsletter">
+                <h4>Newsletter</h4>
+                <p>Subscribe for latest updates and technology trends.</p>
+                <div class="newsletter-input">
+                    <input type="email" placeholder="Enter your email">
+                    <button><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 v.v automation. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <script>
+        // =============================================================================
+        // Contact Form → FastAPI Backend Integration (Production Ready)
+        //
+        // HOW IT WORKS:
+        //   • Submits form data as JSON via fetch() to your FastAPI backend.
+        //   • Backend stores the message in MySQL and sends a Gmail notification.
+        //   • Change BACKEND_URL to your live Railway/Render URL when deploying.
+        //
+        // LOCAL DEV:
+        //   • Start the FastAPI backend: cd backend && uvicorn main:app --reload
+        //   • The form will POST to http://localhost:8000/api/contact
+        // =============================================================================
+
+        // ── Configuration ─────────────────────────────────────────────────────────────
+        // Update this URL after deploying your FastAPI backend to Railway/Render.
+        // Example: "https://vv-contact-api.railway.app"
+        const BACKEND_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+            ? 'http://localhost:8000'           // Local dev
+            : 'https://YOUR_API_URL.railway.app'; // ← Replace with your deployed URL
+
+        // ── DOM References ────────────────────────────────────────────────────────────
+        const form          = document.getElementById('contactForm');
+        const btnText       = document.getElementById('btnText');
+        const btnLoading    = document.getElementById('btnLoading');
+        const submitBtn     = document.getElementById('submitBtn');
+        const successBanner = document.getElementById('successBanner');
+        const errorBanner   = document.getElementById('errorBanner');
+        const errorText     = document.getElementById('errorText');
+
+        // ── Field references ──────────────────────────────────────────────────────────
+        const fields = {
+            name:    { el: document.getElementById('name'),    err: document.getElementById('nameError') },
+            email:   { el: document.getElementById('email'),   err: document.getElementById('emailError') },
+            subject: { el: document.getElementById('subject'), err: document.getElementById('subjectError') },
+            message: { el: document.getElementById('message'), err: document.getElementById('messageError') }
+        };
+
+        // ── Auto-Fill Test Button ─────────────────────────────────────────────────────
+        const testFillBtn = document.getElementById('testFillBtn');
+        if (testFillBtn) {
+            testFillBtn.addEventListener('click', () => {
+                fields.name.el.value    = 'John Doe (API Test)';
+                fields.email.el.value   = 'john.doe@example.com';
+                fields.subject.el.value = 'FastAPI Integration Test';
+                fields.message.el.value = 'This is a test submission to verify the FastAPI backend is connected correctly and emails are being delivered.';
+                Object.values(fields).forEach(({ el, err }) => {
+                    el.classList.remove('input-error');
+                    err.style.display = 'none';
+                });
+            });
+        }
+
+        // ── Live validation: clear errors as user types ───────────────────────────────
+        Object.values(fields).forEach(({ el, err }) => {
+            el.addEventListener('input', () => {
+                el.classList.remove('input-error');
+                err.style.display = 'none';
+            });
+        });
+
+        // ── Email regex ───────────────────────────────────────────────────────────────
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        // ── Client-side validation ────────────────────────────────────────────────────
+        function validate() {
+            let valid = true;
+            const checks = [
+                { key: 'name',    test: v => v.length >= 2 },
+                { key: 'email',   test: v => emailRegex.test(v) },
+                { key: 'subject', test: v => v.length >= 3 },
+                { key: 'message', test: v => v.length >= 10 }
+            ];
+            checks.forEach(({ key, test }) => {
+                const { el, err } = fields[key];
+                const value = el.value.trim();
+                if (!test(value)) {
+                    el.classList.add('input-error');
+                    err.style.display = 'block';
+                    valid = false;
+                } else {
+                    el.classList.remove('input-error');
+                    err.style.display = 'none';
+                }
+            });
+            return valid;
+        }
+
+        // ── Banner helpers ────────────────────────────────────────────────────────────
+        function showBanner(type) {
+            successBanner.style.display = 'none';
+            errorBanner.style.display   = 'none';
+            if (type === 'success') {
+                successBanner.style.display = 'flex';
+                successBanner.classList.add('banner-animate');
+            } else {
+                errorBanner.style.display = 'flex';
+                errorBanner.classList.add('banner-animate');
+            }
+        }
+
+        function setLoading(isLoading) {
+            submitBtn.disabled       = isLoading;
+            btnText.style.display    = isLoading ? 'none' : 'inline';
+            btnLoading.style.display = isLoading ? 'inline' : 'none';
+        }
+
+        // ── Form submission ───────────────────────────────────────────────────────────
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            // Reset banners
+            successBanner.style.display = 'none';
+            errorBanner.style.display   = 'none';
+
+            if (!validate()) return;
+
+            setLoading(true);
+
+            const payload = {
+                full_name: fields.name.el.value.trim(),
+                email:     fields.email.el.value.trim(),
+                subject:   fields.subject.el.value.trim(),
+                message:   fields.message.el.value.trim(),
+            };
+
+            try {
+                const response = await fetch(`${BACKEND_URL}/api/contact`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload),
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    // ── Success ──
+                    const subText = successBanner.querySelector('p');
+                    if (subText) {
+                        subText.textContent = "Thank you! We'll get back to you within 24 hours.";
+                    }
+                    showBanner('success');
+                    form.reset();
+
+                } else if (response.status === 429) {
+                    // ── Rate limited ──
+                    errorText.textContent = data.detail || 'Too many requests. Please wait a minute before trying again.';
+                    showBanner('error');
+
+                } else if (response.status === 422) {
+                    // ── Validation error from server ──
+                    const detail = data.detail;
+                    if (Array.isArray(detail) && detail.length > 0) {
+                        errorText.textContent = detail.map(d => d.msg).join(' · ');
+                    } else {
+                        errorText.textContent = 'Please check your inputs and try again.';
+                    }
+                    showBanner('error');
+
+                } else {
+                    // ── Server error ──
+                    errorText.textContent = data.detail || 'Something went wrong. Please try again or contact us directly.';
+                    showBanner('error');
+                }
+
+            } catch (err) {
+                // ── Network / CORS error ──
+                if (!BACKEND_URL.includes('localhost') && BACKEND_URL.includes('YOUR_API_URL')) {
+                    errorText.textContent = 'Backend URL not configured. Update BACKEND_URL in contact.html to your deployed API URL.';
+                } else {
+                    errorText.textContent = 'Network error. Please check your connection and try again.';
+                }
+                showBanner('error');
+                console.error('[Contact Form] Fetch error:', err);
+
+            } finally {
+                setLoading(false);
+            }
+        });
+    </script>
+</body>
+
+</html>

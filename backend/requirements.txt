@@ -1,0 +1,25 @@
+# =============================================================================
+# V.V. Automation — FastAPI Backend Requirements
+# =============================================================================
+# Install with: pip install -r requirements.txt
+# Tested with Python 3.11+, 3.14+
+# =============================================================================
+
+# ── Web Framework ─────────────────────────────────────────────────────────────
+fastapi==0.115.14
+uvicorn[standard]==0.34.3          # ASGI server (includes websockets, httptools)
+
+# ── Database ──────────────────────────────────────────────────────────────────
+sqlalchemy==2.0.41                 # ORM — parameterized queries, SQL-injection safe
+pymysql==1.1.1                     # Pure-Python MySQL driver (no C extension needed)
+cryptography==45.0.3               # Required by PyMySQL for auth_rsa plugin
+
+# ── Validation & Serialization ────────────────────────────────────────────────
+pydantic[email]==2.13.4            # Data validation (includes email-validator)
+pydantic-settings==2.14.2          # Load settings from .env file
+
+# ── Input Sanitization ────────────────────────────────────────────────────────
+bleach==6.1.0                      # Strip HTML tags from user input (XSS protection)
+
+# ── Utilities ─────────────────────────────────────────────────────────────────
+python-multipart==0.0.20           # Needed for FastAPI form parsing
